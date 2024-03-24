@@ -1,0 +1,31 @@
+---
+const { label } = Astro.props;
+---
+
+<button type="button"><slot /><span>{label}</span></button>
+
+<style>
+  button {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+
+    color: var(--white);
+    font-size: 12px;
+
+    background: transparent;
+
+    border: none;
+
+    cursor: pointer;
+    transition: color 0.2s linear;
+  }
+
+  button:hover {
+    color: var(--primary-color-hover);
+  }
+
+  button:active {
+    color: var(--primary-color-active);
+  }
+</style>

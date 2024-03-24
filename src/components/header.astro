@@ -1,0 +1,117 @@
+---
+import Logo from "@components/logo.astro";
+import Button from "@components/button.astro";
+import Navigation, { type Link } from "@components/navigation.astro";
+import Icon from "./icon.astro";
+
+const primaryLinks: Link[] = [
+  {
+    url: "/gaming-pc",
+    title: "игровые пк",
+  },
+  {
+    url: "/laptops",
+    title: "ноутбуки",
+  },
+  {
+    url: "/workstations",
+    title: "рабочие станции",
+  },
+  {
+    url: "/configurator",
+    title: "конфигуратор",
+  },
+];
+
+const secondaryLinks: Link[] = [
+  {
+    url: "/about",
+    title: "О нас",
+  },
+  {
+    url: "/projects",
+    title: "Наши проекты",
+  },
+  {
+    url: "/contacts",
+    title: "Контакты",
+  },
+];
+---
+
+<header>
+  <div class="container">
+    <div class="header-top">
+      <div class="header-contacts">
+        <Button label="Выбрать город">
+          <Icon name="location-icon" />
+        </Button>
+
+        <a href="#" class="phone-link">+7 (913) 768-24-11</a>
+      </div>
+
+      <Navigation links={secondaryLinks} type="secondary" />
+    </div>
+
+    <div class="header-main">
+      <Logo />
+
+      <Navigation links={primaryLinks} type="primary" />
+    </div>
+  </div>
+</header>
+
+<style>
+  header {
+    width: 100%;
+    min-height: 70px;
+
+    background-color: var(--bg-color);
+  }
+
+  .container {
+    max-width: 1440px;
+
+    padding: 16px;
+    margin: 0 auto;
+  }
+
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+
+    border-bottom: 1px solid var(--border-color);
+
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+  }
+
+  .header-contacts {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .phone-link {
+    color: var(--white);
+    font-size: 14px;
+
+    text-decoration: none;
+
+    transition: color .2s linear ;
+  }
+
+  .phone-link:hover {
+    color: var(--primary-color-hover);
+  }
+
+  .phone-link:active {
+    color: var(--primary-color-active);
+  }
+
+  .header-main {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+</style>

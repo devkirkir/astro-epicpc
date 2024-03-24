@@ -1,0 +1,11 @@
+---
+interface Props {
+  name: "location-icon";
+}
+
+const { name } = Astro.props;
+
+const { default: innerHTML } = await import(`/public/icons/${name}.svg?raw`);
+---
+
+<Fragment set:html={innerHTML} />
