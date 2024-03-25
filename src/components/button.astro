@@ -1,8 +1,14 @@
 ---
-const { label } = Astro.props;
+interface Props {
+  type: "primary" | "secondary" | "sub";
+  className?: string;
+  label?: string;
+}
+
+const { label, type, className } = Astro.props;
 ---
 
-<button type="button"><slot /><span>{label}</span></button>
+<button type="button" class:list={[type, className]}><slot /><span>{label}</span></button>
 
 <style>
   button {
@@ -11,21 +17,57 @@ const { label } = Astro.props;
     gap: 5px;
 
     color: var(--white);
-    font-size: 12px;
 
     background: transparent;
 
     border: none;
 
     cursor: pointer;
-    transition: color 0.2s linear;
+    transition: 0.2s linear;
   }
 
-  button:hover {
+  .primary {
+    font-size: 14px;
+    background-color: var(--primary-color);
+    border-radius: 12px;
+    padding: 8px 16px;
+  }
+
+  .primary:hover {
+    background-color: var(--primary-color-hover);
+  }
+
+  .primary:active {
+    background-color: var(--primary-color-active);
+  }
+
+  .sub {
+    font-size: 12px;
+  }
+
+  .sub:hover {
     color: var(--primary-color-hover);
   }
 
-  button:active {
+  .sub:active {
     color: var(--primary-color-active);
+  }
+
+  .burger-button {
+    display: none;
+  }
+
+  .burger-button span {
+    display: none;
+  }
+
+  @media screen and (max-width: 960px) {
+    .phone-button {
+      display: none;
+    }
+
+    .burger-button {
+      display: flex;
+    }
   }
 </style>

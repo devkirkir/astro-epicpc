@@ -1,4 +1,10 @@
 :root {
+  /* SIZES */
+
+  --min-width: 280px;
+  --max-width: 1440px;
+
+  /* COLORS */
   --primary-color: #ff4e4e;
   --primary-color-hover: #ea4646;
   --primary-color-active: #da3b3b;

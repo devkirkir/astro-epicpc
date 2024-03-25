@@ -2,7 +2,7 @@
 import Logo from "@components/logo.astro";
 import Button from "@components/button.astro";
 import Navigation, { type Link } from "@components/navigation.astro";
-import Icon from "./icon.astro";
+import Icon from "@components/icon.astro";
 
 const primaryLinks: Link[] = [
   {
@@ -43,7 +43,7 @@ const secondaryLinks: Link[] = [
   <div class="container">
     <div class="header-top">
       <div class="header-contacts">
-        <Button label="Выбрать город">
+        <Button type="sub" label="Выбрать город">
           <Icon name="location-icon" />
         </Button>
 
@@ -57,6 +57,18 @@ const secondaryLinks: Link[] = [
       <Logo />
 
       <Navigation links={primaryLinks} type="primary" />
+
+      <div class="header-controls">
+        <Button type="sub">
+          <Icon name="cart-icon" />
+        </Button>
+
+        <Button className="burger-button" type="sub">
+          <Icon name="burger-icon" />
+        </Button>
+
+        <Button className="phone-button" type="primary" label="Заказать звонок" />
+      </div>
     </div>
   </div>
 </header>
@@ -64,13 +76,12 @@ const secondaryLinks: Link[] = [
 <style>
   header {
     width: 100%;
-    min-height: 70px;
 
     background-color: var(--bg-color);
   }
 
   .container {
-    max-width: 1440px;
+    max-width: var(--max-width);
 
     padding: 16px;
     margin: 0 auto;
@@ -79,6 +90,8 @@ const secondaryLinks: Link[] = [
   .header-top {
     display: flex;
     justify-content: space-between;
+
+    min-height: 30px;
 
     border-bottom: 1px solid var(--border-color);
 
@@ -98,7 +111,7 @@ const secondaryLinks: Link[] = [
 
     text-decoration: none;
 
-    transition: color .2s linear ;
+    transition: color 0.2s linear;
   }
 
   .phone-link:hover {
@@ -113,5 +126,18 @@ const secondaryLinks: Link[] = [
     display: flex;
     align-items: center;
     justify-content: space-between;
+  }
+
+  .header-controls {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  @media screen and (max-width: 960px) {
+    .header-contacts {
+      width: 100%;
+      justify-content: space-between;
+    }
   }
 </style>
