@@ -1,16 +1,17 @@
 ---
 import DropNav from "./dropNav.astro";
 
-export type SubNav = {
-  title: string;
-  description: string;
-  url: string;
-};
-
 export type Link = {
   url: string;
   title: string;
   subNav?: SubNav[];
+};
+
+export type SubNav = {
+  title: string;
+  description: string;
+  url: string;
+  level?: SubNav;
 };
 
 interface Props {
@@ -37,11 +38,11 @@ const { links, type } = Astro.props;
 
     if (dropNav) {
       item.addEventListener("mouseover", () => {
-        dropNav.style.display = "flex";
+        dropNav.classList.add("drop-nav-visible");
       });
 
       item.addEventListener("mouseleave", () => {
-        dropNav.style.display = "none";
+        dropNav.classList.remove("drop-nav-visible");
       });
     }
   });
@@ -54,7 +55,7 @@ const { links, type } = Astro.props;
         <li class={`${type}-list-elem`}>
           <a href={url}>{title}</a>
 
-          {subNav && <DropNav label={title} subLinks={subNav} />}
+          {subNav && <DropNav subLinks={subNav} />}
         </li>
       ))
     }

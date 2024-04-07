@@ -11,8 +11,23 @@ const primaryLinks: Link[] = [
     subNav: [
       {
         title: "Оптимальные",
+        url: "/gaming-pc?filter=optimal",
+        description: "Идеальный выбор для FHD/2K",
+      },
+      {
+        title: "Мощные",
+        url: "/gaming-pc?filter=powerful",
+        description: "Премиальные решения для 2K/4K",
+      },
+      {
+        title: "Кастомные",
+        url: "/gaming-pc?filter=custom",
+        description: "Эксклюзивные с водянкой",
+      },
+      {
+        title: "Подобрать ПК",
         url: "#",
-        description: "Идеальный выбор для FHD и 2K",
+        description: "Подберите по задаче",
       },
     ],
   },
@@ -25,6 +40,16 @@ const primaryLinks: Link[] = [
         url: "#",
         description: "Компактная мощность",
       },
+      {
+        title: "Для работы",
+        url: "#",
+        description: "Подобрать по направлению",
+      },
+      {
+        title: "Подобрать ноутбук",
+        url: "#",
+        description: "Подберите по задаче",
+      },
     ],
   },
   {
@@ -35,6 +60,21 @@ const primaryLinks: Link[] = [
         title: "Оптимальные",
         url: "#",
         description: "Идеальные для работы и творчества",
+      },
+      {
+        title: "Мощные",
+        url: "#",
+        description: "Премиальные для профессионалов",
+      },
+      {
+        title: "Кастомные",
+        url: "#",
+        description: "С водяным охлаждением",
+      },
+      {
+        title: "Подобрать ПК",
+        url: "#",
+        description: "Подберите по задаче",
       },
     ],
   },
@@ -160,6 +200,10 @@ const secondaryLinks: Link[] = [
     .header-contacts {
       width: 100%;
       justify-content: space-between;
+    }
+
+    .header-main {
+      padding: 10px 0;
     }
   }
 </style>

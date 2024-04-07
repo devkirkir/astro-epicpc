@@ -2,11 +2,10 @@
 import type { SubNav } from "./navigation.astro";
 
 interface Props {
-  label: string;
   subLinks: SubNav[];
 }
 
-const { label, subLinks } = Astro.props;
+const { subLinks } = Astro.props;
 ---
 
 <div class="drop-nav">
@@ -29,7 +28,7 @@ const { label, subLinks } = Astro.props;
 
 <style>
   .drop-nav {
-    display: none;
+    display: flex;
 
     position: absolute;
     top: 105px;
@@ -40,6 +39,11 @@ const { label, subLinks } = Astro.props;
 
     background-color: var(--bg-color);
 
+    visibility: hidden;
+    opacity: 0;
+
+    transition: opacity 0.2s linear;
+
     padding: 20px;
 
     & .first-column {
@@ -49,21 +53,26 @@ const { label, subLinks } = Astro.props;
         list-style: none;
 
         & li {
+          position: relative;
+
           border-radius: 10px;
-          padding: 16px;
           transition: 0.2s linear;
 
           & a {
+            display: block;
             color: var(--white);
-            font-size: 14px;
+
             text-decoration: none;
+            padding: 16px;
 
             & span {
+              font-size: 16px;
               transition: color 0.2s linear;
             }
 
             & p {
               color: var(--secondary-text-color);
+              font-size: 14px;
             }
           }
 
@@ -73,9 +82,37 @@ const { label, subLinks } = Astro.props;
             & a span {
               color: var(--primary-color-hover);
             }
+
+            &::after {
+              border-color: var(--primary-color-hover);
+            }
+          }
+
+          &::after {
+            content: "";
+            display: block;
+
+            position: absolute;
+            top: calc(50% - 4px);
+            right: 20px;
+
+            width: 8px;
+            height: 8px;
+
+            border-top: 2px solid var(--secondary-text-color);
+            border-right: 2px solid var(--secondary-text-color);
+
+            transform: rotate(45deg);
+            transition: border 0.2s linear;
           }
         }
       }
     }
+  }
+
+  .drop-nav-visible {
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 0.2s linear;
   }
 </style>
