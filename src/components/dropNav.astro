@@ -1,0 +1,81 @@
+---
+import type { SubNav } from "./navigation.astro";
+
+interface Props {
+  label: string;
+  subLinks: SubNav[];
+}
+
+const { label, subLinks } = Astro.props;
+---
+
+<div class="drop-nav">
+  <div class="first-column">
+    <ul>
+      {
+        subLinks.map((link) => (
+          <li>
+            <a href={link.url}>
+              <span>{link.title}</span>
+              <p>{link.description}</p>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+  <div class="level"></div>
+</div>
+
+<style>
+  .drop-nav {
+    display: none;
+
+    position: absolute;
+    top: 105px;
+    left: 0;
+
+    width: 100%;
+    min-height: 400px;
+
+    background-color: var(--bg-color);
+
+    padding: 20px;
+
+    & .first-column {
+      flex: 0 0 340px;
+
+      & ul {
+        list-style: none;
+
+        & li {
+          border-radius: 10px;
+          padding: 16px;
+          transition: 0.2s linear;
+
+          & a {
+            color: var(--white);
+            font-size: 14px;
+            text-decoration: none;
+
+            & span {
+              transition: color 0.2s linear;
+            }
+
+            & p {
+              color: var(--secondary-text-color);
+            }
+          }
+
+          &:hover {
+            background-color: var(--accent-bg-color);
+
+            & a span {
+              color: var(--primary-color-hover);
+            }
+          }
+        }
+      }
+    }
+  }
+</style>

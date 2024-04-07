@@ -8,14 +8,35 @@ const primaryLinks: Link[] = [
   {
     url: "/gaming-pc",
     title: "игровые пк",
+    subNav: [
+      {
+        title: "Оптимальные",
+        url: "#",
+        description: "Идеальный выбор для FHD и 2K",
+      },
+    ],
   },
   {
     url: "/laptops",
     title: "ноутбуки",
+    subNav: [
+      {
+        title: "Для геймеров",
+        url: "#",
+        description: "Компактная мощность",
+      },
+    ],
   },
   {
     url: "/workstations",
     title: "рабочие станции",
+    subNav: [
+      {
+        title: "Оптимальные",
+        url: "#",
+        description: "Идеальные для работы и творчества",
+      },
+    ],
   },
   {
     url: "/configurator",
@@ -75,63 +96,64 @@ const secondaryLinks: Link[] = [
 
 <style>
   header {
+    position: relative;
     width: 100%;
+    min-height: 110px;
 
     background-color: var(--bg-color);
-  }
 
-  .container {
-    max-width: var(--max-width);
+    & .container {
+      max-width: var(--max-width);
 
-    padding: 16px;
-    margin: 0 auto;
-  }
+      padding: 16px 16px 0 16px;
+      margin: 0 auto;
 
-  .header-top {
-    display: flex;
-    justify-content: space-between;
+      & .header-top {
+        display: flex;
+        justify-content: space-between;
 
-    min-height: 30px;
+        min-height: 30px;
 
-    border-bottom: 1px solid var(--border-color);
+        border-bottom: 1px solid var(--border-color);
 
-    padding-bottom: 10px;
-    margin-bottom: 10px;
-  }
+        padding-bottom: 10px;
 
-  .header-contacts {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-  }
+        & .header-contacts {
+          display: flex;
+          align-items: center;
+          gap: 16px;
 
-  .phone-link {
-    color: var(--white);
-    font-size: 14px;
+          & .phone-link {
+            color: var(--white);
+            font-size: 14px;
 
-    text-decoration: none;
+            text-decoration: none;
 
-    transition: color 0.2s linear;
-  }
+            transition: color 0.2s linear;
 
-  .phone-link:hover {
-    color: var(--primary-color-hover);
-  }
+            &:hover {
+              color: var(--primary-color-hover);
+            }
 
-  .phone-link:active {
-    color: var(--primary-color-active);
-  }
+            &:active {
+              color: var(--primary-color-active);
+            }
+          }
+        }
+      }
 
-  .header-main {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
+      & .header-main {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
 
-  .header-controls {
-    display: flex;
-    align-items: center;
-    gap: 12px;
+        & .header-controls {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+        }
+      }
+    }
   }
 
   @media screen and (max-width: 960px) {

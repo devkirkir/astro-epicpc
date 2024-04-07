@@ -1,7 +1,16 @@
 ---
+import DropNav from "./dropNav.astro";
+
+export type SubNav = {
+  title: string;
+  description: string;
+  url: string;
+};
+
 export type Link = {
   url: string;
   title: string;
+  subNav?: SubNav[];
 };
 
 interface Props {
@@ -15,20 +24,37 @@ const { links, type } = Astro.props;
 ---
 
 <script>
-  const links = Array.from(document.querySelectorAll("a"));
+  const allLinks = Array.from(document.querySelectorAll("a"));
+  const listItems = document.querySelectorAll(".primary-list-elem");
   const urlAttribute = document.querySelector("nav")?.getAttribute("data-url");
 
-  const [link] = links.filter((link) => link.getAttribute("href") === urlAttribute);
+  const currentLink = allLinks.find((link) => link.getAttribute("href") === urlAttribute);
 
-  link.classList.add("active");
+  if (currentLink) currentLink.classList.add("active");
+
+  listItems.forEach((item) => {
+    const dropNav = (item.children[1] as HTMLElement) || null;
+
+    if (dropNav) {
+      item.addEventListener("mouseover", () => {
+        dropNav.style.display = "flex";
+      });
+
+      item.addEventListener("mouseleave", () => {
+        dropNav.style.display = "none";
+      });
+    }
+  });
 </script>
 
 <nav class={type} data-url={url}>
-  <ul>
+  <ul class="nav-list">
     {
-      links.map(({ url, title }) => (
-        <li>
+      links.map(({ url, title, subNav }) => (
+        <li class={`${type}-list-elem`}>
           <a href={url}>{title}</a>
+
+          {subNav && <DropNav label={title} subLinks={subNav} />}
         </li>
       ))
     }
@@ -36,41 +62,54 @@ const { links, type } = Astro.props;
 </nav>
 
 <style>
-  ul {
-    display: flex;
-    list-style: none;
+  nav {
+    & .nav-list li {
+      display: inline-block;
+
+      & a {
+        color: var(--white);
+
+        text-decoration: none;
+
+        transition: color 0.2s linear;
+      }
+
+      & a.active {
+        color: var(--primary-color);
+      }
+
+      &:hover a {
+        color: var(--primary-color-hover);
+      }
+    }
   }
 
-  ul li a {
-    color: var(--white);
-    text-decoration: none;
+  .primary {
+    & .nav-list {
+      list-style: none;
 
-    transition: color 0.2s linear;
+      & li {
+        padding: 20px 10px;
+
+        & a {
+          font-size: 14px;
+          font-weight: 500;
+          text-transform: uppercase;
+        }
+      }
+    }
   }
 
-  ul li a:hover {
-    color: var(--primary-color-hover);
-  }
+  .secondary {
+    & .nav-list {
+      & li {
+        padding: 0 4px;
 
-  ul li a.active {
-    color: var(--primary-color);
-  }
-
-  .primary ul {
-    gap: 20px;
-  }
-
-  .primary ul li a {
-    font-size: 14px;
-    text-transform: uppercase;
-  }
-
-  .secondary ul {
-    gap: 14px;
-  }
-
-  .secondary ul li a {
-    font-size: 12px;
+        & a {
+          font-size: 12px;
+        }
+      }
+    }
   }
 
   @media screen and (max-width: 960px) {

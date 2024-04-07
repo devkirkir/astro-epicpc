@@ -31,34 +31,34 @@ const { label, type, className } = Astro.props;
     background-color: var(--primary-color);
     border-radius: 12px;
     padding: 8px 16px;
-  }
 
-  .primary:hover {
-    background-color: var(--primary-color-hover);
-  }
+    &:hover {
+      background-color: var(--primary-color-hover);
+    }
 
-  .primary:active {
-    background-color: var(--primary-color-active);
+    &:active {
+      background-color: var(--primary-color-active);
+    }
   }
 
   .sub {
     font-size: 12px;
-  }
 
-  .sub:hover {
-    color: var(--primary-color-hover);
-  }
+    &:hover {
+      color: var(--primary-color-hover);
+    }
 
-  .sub:active {
-    color: var(--primary-color-active);
+    &:active {
+      color: var(--primary-color-active);
+    }
   }
 
   .burger-button {
     display: none;
-  }
 
-  .burger-button span {
-    display: none;
+    & span {
+      display: none;
+    }
   }
 
   @media screen and (max-width: 960px) {
