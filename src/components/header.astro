@@ -1,7 +1,7 @@
 ---
 import Logo from "@components/logo.astro";
 import Button from "@components/button.astro";
-import Navigation, { type Link } from "@components/navigation.astro";
+import Navigation, { type Link, type SubNav } from "@components/navigation.astro";
 import Icon from "@components/icon.astro";
 
 const primaryLinks: Link[] = [
@@ -13,16 +13,37 @@ const primaryLinks: Link[] = [
         title: "Оптимальные",
         url: "/gaming-pc?filter=optimal",
         description: "Идеальный выбор для FHD/2K",
+        level: [
+          {
+            title: "EPIC PC",
+            description: "Игровой ПК с RTX 4060/4060 Ti",
+            url: "#",
+          },
+        ],
       },
       {
         title: "Мощные",
         url: "/gaming-pc?filter=powerful",
         description: "Премиальные решения для 2K/4K",
+        level: [
+          {
+            title: "EPIC PC",
+            description: "Игровой ПК с RTX 4070/4070 Ti",
+            url: "#",
+          },
+        ],
       },
       {
         title: "Кастомные",
         url: "/gaming-pc?filter=custom",
         description: "Эксклюзивные с водянкой",
+        level: [
+          {
+            title: "EPIC PC",
+            description: "Полная мощь с RTX 4090",
+            url: "#",
+          },
+        ],
       },
       {
         title: "Подобрать ПК",
@@ -37,12 +58,12 @@ const primaryLinks: Link[] = [
     subNav: [
       {
         title: "Для геймеров",
-        url: "#",
+        url: "/laptops?filter=gaming",
         description: "Компактная мощность",
       },
       {
         title: "Для работы",
-        url: "#",
+        url: "/laptops?filter=work",
         description: "Подобрать по направлению",
       },
       {
@@ -58,23 +79,51 @@ const primaryLinks: Link[] = [
     subNav: [
       {
         title: "Оптимальные",
-        url: "#",
+        url: "/workstations?filter=optimal",
         description: "Идеальные для работы и творчества",
+        level: [
+          {
+            title: "EPIC PC",
+            description: "Игровой ПК с RTX 4060/4060 Ti",
+            url: "#",
+          },
+        ],
       },
       {
         title: "Мощные",
-        url: "#",
+        url: "/workstations?filter=powerful",
         description: "Премиальные для профессионалов",
+        level: [
+          {
+            title: "EPIC PC",
+            description: "Игровой ПК с RTX 4060/4060 Ti",
+            url: "#",
+          },
+        ],
       },
       {
         title: "Кастомные",
-        url: "#",
+        url: "/workstations?filter=custom",
         description: "С водяным охлаждением",
+        level: [
+          {
+            title: "EPIC PC",
+            description: "Игровой ПК с RTX 4060/4060 Ti",
+            url: "#",
+          },
+        ],
       },
       {
         title: "Подобрать ПК",
         url: "#",
         description: "Подберите по задаче",
+        level: [
+          {
+            title: "EPIC PC",
+            description: "Игровой ПК с RTX 4060/4060 Ti",
+            url: "#",
+          },
+        ],
       },
     ],
   },

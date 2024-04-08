@@ -1,18 +1,22 @@
 ---
 import DropNav from "./dropNav.astro";
 
-export type Link = {
+export interface Link {
   url: string;
   title: string;
   subNav?: SubNav[];
-};
+}
 
-export type SubNav = {
+export interface SubNav extends Link {
+  description: string;
+  level?: Level[];
+}
+
+interface Level {
   title: string;
   description: string;
   url: string;
-  level?: SubNav;
-};
+}
 
 interface Props {
   links: Link[];
@@ -38,11 +42,11 @@ const { links, type } = Astro.props;
 
     if (dropNav) {
       item.addEventListener("mouseover", () => {
-        dropNav.classList.add("drop-nav-visible");
+        dropNav.classList.add("drop-nav--visible");
       });
 
       item.addEventListener("mouseleave", () => {
-        dropNav.classList.remove("drop-nav-visible");
+        dropNav.classList.remove("drop-nav--visible");
       });
     }
   });
